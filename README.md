@@ -144,4 +144,4 @@ E-mails em spam: envie com menos frequência, teste com outros provedores, confi
 Contribuições
 
 PRs e issues são bem-vindos! 
-Caso tenha alguma contribuição em mente, não exite em dar um fork e compartilha-la comigo🤝!
+Caso tenha alguma contribuição em mente, não hesite em dar um fork e compartilha-la comigo🤝!

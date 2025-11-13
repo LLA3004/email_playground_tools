@@ -39,7 +39,7 @@ def gerar_corpo_email(nome: str, cpf: str) -> str:
     Equipe de Atendimento
     """
     return corpo.strip()
-
+#função de clock antiga
 def registrar_cpf_enviado(cpf: str, arquivo: str = CPFS_FILE):
     """Anexa o CPF ao arquivo com timestamp UTC (uma linha por envio)."""
     ts = datetime.utcnow().isoformat()
@@ -57,7 +57,7 @@ def enviar_n_emails(n: int, delay_s: float = 0.5):
         corpo = gerar_corpo_email(nome, cpf)
 
         try:
-            sender.exemplo_uso_envio(corpo)  # assume lança exceção em caso de falha
+            sender.exemplo_uso_envio(corpo)  
             registrar_cpf_enviado(cpf)
             print(f"[{i+1}/{n}] Enviado para {nome} ({cpf}) — registrado.")
         except Exception as e:

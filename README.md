@@ -48,17 +48,17 @@ Adicione .env ao seu .gitignore
 
 Exemplo seguro de .env.example 
 # .env.example (APENAS MODELO)
-# API Invertexto
+#API Invertexto
 INVERTEXTO_TOKEN=SEU_TOKEN_AQUI
 
-# SMTP
+#SMTP
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 USE_SSL=0               # 1 para SSL (porta 465), 0 para STARTTLS (porta 587)
 SMTP_USER=seu_email@exemplo.com
 SMTP_PASS=sua_app_password
 
-# Remetente / destinatários
+#Remetente / destinatários
 FROM_NAME=Nome do Remetente
 MAIL_TO=destino@exemplo.com
 MAIL_CC=copia1@exemplo.com,copia2@exemplo.com

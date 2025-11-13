@@ -1,4 +1,4 @@
-Email Playground Tools — README
+# Email Playground Tools — README
 Visão geral
 
 Email Playground Tools é uma pequena tool em Python para fins de aprendizado e testes:
@@ -7,16 +7,15 @@ shooter.py — consome a API Invertexto para gerar nome e CPF fictícios;
 
 sender.py — envia e-mail via SMTP usando credenciais locais.
 
-Este repositório contém duas variantes de configuração (com .env e sem .env), mas o README abaixo assume que você usará .env e explica como proteger suas credenciais corretamente.
-
-Estrutura recomendada do repositório
+Estrutura do repositório
 email_playground_tools/
-├─ shooter.py         # gera nome e cpf (usa TOKEN)
-├─ sender.py          # envia e-mail (lê .env via python-dotenv)
-├─ .env.example       # modelo (sem dados sensíveis) — comitar
-├─ .gitignore         # deve incluir .env — comitar
-├─ README.md          # este arquivo
-└─ requirements.txt   # requests, python-dotenv (opcional)
+* shooter.py         # gera nome e cpf (usa TOKEN)
+* sender.py          # envia e-mail (lê .env via python-dotenv)
+* .env.example       # modelo (sem dados sensíveis) — comitar
+* gitignore         # deve incluir .env — comitar
+* README.md          # este arquivo
+
+
 
 Instalação (rápido)
 
@@ -33,20 +32,17 @@ source .venv/bin/activate    # macOS / Linux
 .venv\Scripts\Activate.ps1   # Windows PowerShell
 
 
-Instale dependências:
-
-pip install -r requirements.txt
-# ou
+# Instale dependências:
 pip install requests python-dotenv
 
-Arquivo .env — o que é e por que NÃO comitar
+# Arquivo .env — o que é e por que NÃO comitar
 
 O arquivo .env é local e normalmente contém credenciais sensíveis (token da API, usuário e senha do SMTP). NÃO comite esse arquivo para o GitHub. Para evitar vazamentos:
 
 Adicione .env ao seu .gitignore
 
+Exemplo seguro de .env.example:
 
-Exemplo seguro de .env.example 
 # .env.example (APENAS MODELO)
 #API Invertexto
 INVERTEXTO_TOKEN=SEU_TOKEN_AQUI
@@ -125,7 +121,7 @@ MAIL_TO: separe múltiplos destinatários por vírgula (ou use apenas um endere�
 
 MAIL_CC: deixe em branco se não houver cópias. O código deve tratar strings vazias convertendo para lista vazia.
 
-Boas práticas de segurança
+# Boas práticas de segurança
 
 Use App Passwords quando disponível (Gmail, etc.) em vez da senha principal.
 

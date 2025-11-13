@@ -16,7 +16,7 @@ email_playground_tools/
 ├─ .env.example       # modelo (sem dados sensíveis) — comitar
 ├─ .gitignore         # deve incluir .env — comitar
 ├─ README.md          # este arquivo
-└─ requirements.txt   # requests, python-dotenv (opcional)
+
 
 Instalação (rápido)
 
@@ -33,20 +33,17 @@ source .venv/bin/activate    # macOS / Linux
 .venv\Scripts\Activate.ps1   # Windows PowerShell
 
 
-Instale dependências:
-
-pip install -r requirements.txt
-# ou
+# Instale dependências:
 pip install requests python-dotenv
 
-Arquivo .env — o que é e por que NÃO comitar
+# Arquivo .env — o que é e por que NÃO comitar
 
 O arquivo .env é local e normalmente contém credenciais sensíveis (token da API, usuário e senha do SMTP). NÃO comite esse arquivo para o GitHub. Para evitar vazamentos:
 
 Adicione .env ao seu .gitignore
 
+Exemplo seguro de .env.example:
 
-Exemplo seguro de .env.example 
 # .env.example (APENAS MODELO)
 #API Invertexto
 INVERTEXTO_TOKEN=SEU_TOKEN_AQUI
@@ -125,7 +122,7 @@ MAIL_TO: separe múltiplos destinatários por vírgula (ou use apenas um endere�
 
 MAIL_CC: deixe em branco se não houver cópias. O código deve tratar strings vazias convertendo para lista vazia.
 
-Boas práticas de segurança
+# Boas práticas de segurança
 
 Use App Passwords quando disponível (Gmail, etc.) em vez da senha principal.
 

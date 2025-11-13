@@ -7,14 +7,13 @@ shooter.py — consome a API Invertexto para gerar nome e CPF fictícios;
 
 sender.py — envia e-mail via SMTP usando credenciais locais.
 
-Este repositório contém duas variantes de configuração (com .env e sem .env), mas o README abaixo assume que você usará .env e explica como proteger suas credenciais corretamente.
-
-Estrutura recomendada do repositório
+Estrutura do repositório
 email_playground_tools/
 ├─ shooter.py         # gera nome e cpf (usa TOKEN)
 ├─ sender.py          # envia e-mail (lê .env via python-dotenv)
 ├─ .env.example       # modelo (sem dados sensíveis) — comitar
 ├─ .gitignore         # deve incluir .env — comitar
+├─ README.md          # este arquivo
 ├─ README.md          # este arquivo
 
 

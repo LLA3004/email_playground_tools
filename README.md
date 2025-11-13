@@ -1,4 +1,4 @@
-Email Playground Tools — README
+# Email Playground Tools — README
 Visão geral
 
 Email Playground Tools é uma pequena tool em Python para fins de aprendizado e testes:

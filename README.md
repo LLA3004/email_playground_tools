@@ -9,11 +9,11 @@ sender.py — envia e-mail via SMTP usando credenciais locais.
 
 Estrutura do repositório
 email_playground_tools/
-shooter.py         # gera nome e cpf (usa TOKEN)
-sender.py          # envia e-mail (lê .env via python-dotenv)
-.env.example       # modelo (sem dados sensíveis) — comitar
-gitignore         # deve incluir .env — comitar
-README.md          # este arquivo
+* shooter.py         # gera nome e cpf (usa TOKEN)
+* sender.py          # envia e-mail (lê .env via python-dotenv)
+* .env.example       # modelo (sem dados sensíveis) — comitar
+* gitignore         # deve incluir .env — comitar
+* README.md          # este arquivo
 
 
 

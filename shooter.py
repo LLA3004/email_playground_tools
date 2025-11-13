@@ -1,15 +1,26 @@
 import requests
 import sender
 import time
+import os
 from datetime import datetime
+from dotenv import load_dotenv
 
-API_URL = "https://api.invertexto.com/v1/faker?token=22881|Bqwh6BfkXZzKQ06LhoTO0TrnDHD0SYEN&fields=name,cpf&locale=pt_BR"
+load_dotenv()
+
+# carrega o token do .env
+token = os.getenv("INVERTEXTO_TOKEN")
+
+if not token:
+    raise ValueError("❌ Token da API Invertexto não encontrado no .env")
+
+# define a URL com o token
+url = f"https://api.invertexto.com/v1/faker?token={token}&fields=name,cpf&locale=pt_BR"
 CPFS_FILE = "cpfs_enviados.txt"
 
 def obter_dados_faker():
     """Retorna (nome, cpf) ou (None, None) em caso de erro."""
     try:
-        response = requests.get(API_URL, timeout=10)
+        response = requests.get(url, timeout=10)
         response.raise_for_status()
     except requests.RequestException as e:
         print("Erro ao chamar API:", e)

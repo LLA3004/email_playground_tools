@@ -1,6 +1,11 @@
 import smtplib
 from email.message import EmailMessage
 from typing import List, Optional
+from dotenv import load_dotenv
+import os
+
+# Carrega as variáveis do arquivo .env
+load_dotenv()
 
 def send_email(
     smtp_host: str,
@@ -17,16 +22,11 @@ def send_email(
     try:
         msg = EmailMessage()
         sender_email = username
-        if from_name:
-            msg['From'] = f"{from_name} <{sender_email}>"
-        else:
-            msg['From'] = sender_email
-
-        msg['To'] = ", ".join(to)
+        msg["From"] = f"{from_name} <{sender_email}>" if from_name else sender_email
+        msg["To"] = ", ".join(to)
         if cc:
-            msg['Cc'] = ", ".join(cc)
-        msg['Subject'] = subject
-
+            msg["Cc"] = ", ".join(cc)
+        msg["Subject"] = subject
         msg.set_content(body)
 
         recipients = to + (cc or [])
@@ -48,16 +48,19 @@ def send_email(
         print("Erro ao enviar e-mail:", e)
         return False
 
-def exemplo_uso_envio(corpo):
-    #Algumas configurações podem variar de acordo com seu provedor de e-mail
-    SMTP_HOST = "smtp.gmail.com"
-    SMTP_PORT = 587                          # 587=STARTTLS, 465=SSL
-    USERNAME = ""                            #Seu endereço de e-mail
-    PASSWORD = ""                            #Senha ou APP Password do seu e-mail. para Gmail, gere sua APP Password em: https://myaccount.google.com/apppasswords 
-    FROM_NAME = "teste_envio_de_emails"      #Alias que substituí o nome do endereço de e-mail
 
-    destinatarios = [""]                     #Destinatário/s do e-mail
-    #cc = ["copia@exemplo.com"]              # cópias do e-mail ou None para nenhum, descomente para enviar e-mail com cópias junto à linha 72
+def exemplo_uso_envio(corpo: str):
+    # Carrega as variáveis do .env
+    SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
+    SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
+    USERNAME = os.getenv("SMTP_USER", "")
+    PASSWORD = os.getenv("SMTP_PASS", "")
+    FROM_NAME = os.getenv("FROM_NAME", "teste_envio_de_emails")
+
+    # Listas de destinatários e cópia (se existir)
+    destinatarios = os.getenv("MAIL_TO", "").split(",")
+    cc_raw = os.getenv("MAIL_CC", "")
+    cc = [c.strip() for c in cc_raw.split(",") if c.strip()] if cc_raw else None
 
     assunto = "Confirmação de recebimento dos dados"
 
@@ -69,12 +72,12 @@ def exemplo_uso_envio(corpo):
         subject=assunto,
         body=corpo,
         to=destinatarios,
-     #   cc=cc,
-        use_ssl=False,    # True se usar porta 465
-        from_name=FROM_NAME
+        cc=cc,
+        use_ssl=bool(int(os.getenv("USE_SSL", 0))),  # 1 ou 0 no .env
+        from_name=FROM_NAME,
     )
 
     if enviado:
-        print("E-mail enviado com sucesso!")
+        print("✅ E-mail enviado com sucesso!")
     else:
-        print("Falha ao enviar o e-mail.")
+        print("❌ Falha ao enviar o e-mail.")
